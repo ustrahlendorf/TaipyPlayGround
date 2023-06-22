@@ -10,4 +10,4 @@ COPY . /app
 RUN pip install -r venv_requirements.txt
 
 # Start up command
-CMD python main.py
+ENTRYPOINT ["python" , "-m", "main", "--host=0.0.0.0"]
