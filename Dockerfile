@@ -1,5 +1,5 @@
 # Your Python version
-FROM python:3.9
+FROM python:3.11-bookworm
 
 # Web port of the application
 EXPOSE 5000
