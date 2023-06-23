@@ -2,7 +2,7 @@
 FROM python:3.11-bookworm
 
 # Web port of the application
-EXPOSE 5000
+EXPOSE 5001
 
 # Install your application
 WORKDIR /app
