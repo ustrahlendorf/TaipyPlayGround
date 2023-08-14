@@ -1,4 +1,5 @@
-from taipy.gui import Gui, notify
+from taipy.gui import Gui as tpGui
+from taipy.gui import notify as tpNotify
 
 import pandas as pd
 
@@ -66,7 +67,7 @@ layout = {
 }
 
 def on_button_action(state):
-    notify(state, 'info', f'The text is: {state.text}')
+    tpNotify(state, 'info', f'The text is: {state.text}')
     state.text = "Button Pressed"
 
 def on_change(state, var_name, var_value):
@@ -79,12 +80,12 @@ def get_data(path: str):
     dataset["Datum"] = pd.to_datetime(dataset["Datum"], dayfirst=True).dt.date
     return dataset
 
-gui = Gui(page=section_1 + section_2)
+gui = tpGui(page=section_1 + section_2)
 dataset = get_data("./dataset.csv")
 
 if __name__ == '__main__':
     # Execute by the _Python_ interpretor, for debug only.
-    Gui.run(gui, title="Taipy Demo", use_reloader=True, dark_mode=True, port=5001, flask_log=False)
+    tpGui.run(gui, title="Taipy Demo", use_reloader=True, dark_mode=True, port=5001, flask_log=False)
 else:
     # Execute by _Gunicorn_, for production environment.
-    app = Gui.run(gui, title="Taipy Demo", run_server=False)
+    app = tpGui.run(gui, title="Taipy Demo", run_server=False)
